@@ -1,6 +1,6 @@
 {
   "name": "gulp-cloudfront-invalidate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (http://pksunkara.github.com)",
   "description": "A gulp plugin that allows you to invalidate paths in AWS cloudfront",
   "homepage": "https://github.com/pksunkara/gulp-cloudfront-invalidate",
