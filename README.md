@@ -14,7 +14,7 @@ var gulp = require('gulp')
 
 var settings = {
   distribution: 'E2A654H2YRPD0W', // Cloudfront distribution ID
-  paths: ['index.html']           // Paths to invalidate
+  paths: ['/index.html']          // Paths to invalidate
   accessKeyId: '...',             // AWS Access Key ID
   secretAccessKey: '...',         // AWS Secret Access Key
   wait: true                      // Whether to wait until invalidation is completed (default: false)
