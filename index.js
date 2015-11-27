@@ -9,7 +9,8 @@ module.exports = function (options) {
 
   cloudfront.config.update({
     accessKeyId: options.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: options.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY
+    secretAccessKey: options.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY,
+    sessionToken: options.sessionToken || process.env.AWS_SESSION_TOKEN
   });
 
   var complain = function (err, msg, callback) {

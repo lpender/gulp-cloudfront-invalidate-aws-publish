@@ -17,6 +17,7 @@ var settings = {
   paths: ['/index.html']          // Paths to invalidate
   accessKeyId: '...',             // AWS Access Key ID
   secretAccessKey: '...',         // AWS Secret Access Key
+  sessionToken: '...',            // Optional AWS Session Token
   wait: true                      // Whether to wait until invalidation is completed (default: false)
 }
 
