@@ -13,6 +13,8 @@ module.exports = function (options) {
     sessionToken: options.sessionToken || process.env.AWS_SESSION_TOKEN
   });
 
+  var files = [];
+
   var complain = function (err, msg, callback) {
     throw new util.PluginError('gulp-cloudfront-invalidate', msg + ': ' + err);
     return callback(false);
@@ -35,14 +37,49 @@ module.exports = function (options) {
     })
   };
 
-  var work = function (callback) {
+  var processFile = function (file, encoding, callback) {
+    // https://github.com/pgherveou/gulp-awspublish/blob/master/lib/log-reporter.js
+    var state;
+
+    if (!file.s3) return cb(null, file);
+    if (!file.s3.state) return cb(null, file);
+    if (options.states &&
+        options.states.indexOf(file.s3.state) === -1) return cb(null, file);
+
+    switch (file.s3.state) {
+      case 'update':
+        files.push(file.s3.path);
+        break;
+      case 'create':
+        files.push(file.s3.path);
+        break;
+      case 'delete':
+        files.push(file.s3.path);
+        break;
+      case 'cache':
+        break;
+      default:
+        util.log("Unknown state: " + file.s3.state);
+        break;
+    }
+
+    return callback();
+  };
+
+  var invalidate = function(callback){
+    if(files.length == 0) return callback();
+
+    files = files.map(function(file) {
+      return "/" + file;
+    });
+
     cloudfront.createInvalidation({
       DistributionId: options.distribution,
       InvalidationBatch: {
         CallerReference: Date.now().toString(),
         Paths: {
-          Quantity: options.paths.length,
-          Items: options.paths
+          Quantity: files.length,
+          Items: files
         }
       }
     }, function (err, res) {
@@ -56,9 +93,7 @@ module.exports = function (options) {
 
       check(res.Invalidation.Id, callback);
     });
-  };
+  }
 
-  return through.obj(function (file, enc, callback) {
-    callback();
-  }, work);
+  return through.obj(processFile, invalidate);
 };
