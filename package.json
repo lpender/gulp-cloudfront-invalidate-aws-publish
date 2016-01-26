@@ -1,16 +1,17 @@
 {
-  "name": "gulp-cloudfront-invalidate",
-  "version": "0.1.1",
-  "author": "Pavan Kumar Sunkara <pavan.sss1991@gmail.com> (http://pksunkara.github.com)",
-  "description": "A gulp plugin that allows you to invalidate paths in AWS cloudfront",
-  "homepage": "https://github.com/pksunkara/gulp-cloudfront-invalidate",
+  "name": "gulp-cloudfront-invalidate-aws-publish",
+  "version": "0.0.1",
+  "author": "Lee Pender <lpender@gmail.com> (http://lpender.github.com)",
+  "description": "Invalidates paths published with gulp-awspublish",
+  "homepage": "https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish",
   "main": "index.js",
-  "repository": "pksunkara/gulp-cloudfront-invalidate",
+  "repository": "lpender/gulp-cloudfront-invalidate-aws-publish",
   "keywords": [
     "gulp",
     "cloudfront",
     "invalidate",
     "aws",
+    "aws-publish",
     "invalidation"
   ],
   "dependencies": {
@@ -19,12 +20,11 @@
     "through2": "2.0.x"
   },
   "bugs": {
-    "url": "https://github.com/pksunkara/gulp-cloudfront-invalidate/issues"
+    "url": "https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish/issues"
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/pksunkara/octonode/master/LICENSE"
+      "type": "MIT"
     }
   ]
 }
