@@ -32,10 +32,7 @@ var awsSettings = {
 }
 
 var cfSettings = {
-  // required
   distribution: 'E2A654H2YRPD0W', // Cloudfront distribution ID
-
-  // optional
   accessKeyId: '...',             // AWS Access Key ID
   secretAccessKey: '...',         // AWS Secret Access Key
   sessionToken: '...',            // Optional AWS Session Token
