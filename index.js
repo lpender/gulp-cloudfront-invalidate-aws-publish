@@ -57,6 +57,7 @@ module.exports = function (options) {
         files.push(file.s3.path);
         break;
       case 'cache':
+      case 'skip':
         break;
       default:
         util.log("Unknown state: " + file.s3.state);
