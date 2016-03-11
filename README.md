@@ -21,7 +21,7 @@ npm install gulp-cloudfront-invalidate-aws-publish
 
 ```js
 var gulp = require('gulp')
-  , awspublish = require('gulp-aws-publish')
+  , awspublish = require('gulp-awspublish')
   , cloudfront = require('gulp-cloudfront-invalidate');
 
 var awsSettings = {
