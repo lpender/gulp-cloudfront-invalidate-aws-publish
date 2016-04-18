@@ -7,7 +7,7 @@ invalidates those.
 
 This will work with any similar plugin that use the same `file.s3` API internally.
 
-Tested with `gulp-aws-publish` v3.0.1.
+Tested with `gulp-awspublish` v3.0.1.
 
 See [gulp-awspublish](https://github.com/pgherveou/gulp-awspublish/) for more
 implementation details.
@@ -22,7 +22,7 @@ npm install gulp-cloudfront-invalidate-aws-publish
 ```js
 var gulp = require('gulp')
   , awspublish = require('gulp-awspublish')
-  , cloudfront = require('gulp-cloudfront-invalidate');
+  , cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 
 var awsSettings = {
   region: "...",
