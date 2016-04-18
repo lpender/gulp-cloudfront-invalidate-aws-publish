@@ -1,11 +1,10 @@
 # gulp-cloudfront-invalidate-aws-publish
-A gulp plugin that allows you to invalidate paths in AWS cloudfront.
+A gulp plugin that allows you to programmatically invalidate paths in AWS cloudfront.
 
-This version checks the files that were updated, created, or deleted by
-[gulp-awspublish](https://github.com/pgherveou/gulp-awspublish/), and only
-invalidates those.
+This version invalidates the array of files that were updated, created, or deleted by
+[gulp-awspublish](https://github.com/pgherveou/gulp-awspublish/).
 
-This will work with any similar plugin that use the same `file.s3` API internally.
+This will work with any similar plugin that uses the same `file.s3` API internally.
 
 Tested with `gulp-awspublish` v3.0.1.
 
