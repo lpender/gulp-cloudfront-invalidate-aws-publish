@@ -41,18 +41,14 @@ module.exports = function (options) {
     // https://github.com/pgherveou/gulp-awspublish/blob/master/lib/log-reporter.js
     var state;
 
-    if (!file.s3) return cb(null, file);
-    if (!file.s3.state) return cb(null, file);
+    if (!file.s3) return callback(null, file);
+    if (!file.s3.state) return callback(null, file);
     if (options.states &&
-        options.states.indexOf(file.s3.state) === -1) return cb(null, file);
+        options.states.indexOf(file.s3.state) === -1) return callback(null, file);
 
     switch (file.s3.state) {
       case 'update':
-        files.push(file.s3.path);
-        break;
       case 'create':
-        files.push(file.s3.path);
-        break;
       case 'delete':
         files.push(file.s3.path);
         break;
@@ -60,7 +56,7 @@ module.exports = function (options) {
       case 'skip':
         break;
       default:
-        util.log("Unknown state: " + file.s3.state);
+        util.log('Unknown state: ' + file.s3.state);
         break;
     }
 
@@ -71,7 +67,7 @@ module.exports = function (options) {
     if(files.length == 0) return callback();
 
     files = files.map(function(file) {
-      return "/" + file;
+      return '/' + file;
     });
 
     cloudfront.createInvalidation({

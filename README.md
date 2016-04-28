@@ -23,25 +23,36 @@ var gulp = require('gulp')
   , awspublish = require('gulp-awspublish')
   , cloudfront = require('gulp-cloudfront-invalidate-aws-publish');
 
-var awsSettings = {
-  region: "...",
+var publisher = awspublish.create({
+  region: 'your-region-id',
   params: {
-    bucket: "E123123"
+    Bucket: '...'
   }
-}
+}, {
+  cacheFile: 'your-cache-location'
+});
+
+// define custom headers
+var headers = {
+  'Cache-Control': 'max-age=315360000, no-transform, public'
+  // ...
+};
 
 var cfSettings = {
   distribution: 'E2A654H2YRPD0W', // Cloudfront distribution ID
-  accessKeyId: '...',             // AWS Access Key ID
-  secretAccessKey: '...',         // AWS Secret Access Key
+  accessKeyId: '...',             // Optional AWS Access Key ID
+  secretAccessKey: '...',         // Optional AWS Secret Access Key
   sessionToken: '...',            // Optional AWS Session Token
   wait: true                      // Whether to wait until invalidation is completed (default: false)
 }
 
 gulp.task('invalidate', function () {
+
   return gulp.src('*')
-    .pipe(awspublish(awsSettings));
-    .pipe(cloudfront(cfSettings));
+    .pipe(publisher.publish(headers))
+    .pipe(cloudfront(cfSettings))
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter());
 });
 ```
 
