@@ -41,10 +41,10 @@ module.exports = function (options) {
     // https://github.com/pgherveou/gulp-awspublish/blob/master/lib/log-reporter.js
     var state;
 
-    if (!file.s3) return cb(null, file);
-    if (!file.s3.state) return cb(null, file);
+    if (!file.s3) return callback(null, file);
+    if (!file.s3.state) return callback(null, file);
     if (options.states &&
-        options.states.indexOf(file.s3.state) === -1) return cb(null, file);
+        options.states.indexOf(file.s3.state) === -1) return callback(null, file);
 
     switch (file.s3.state) {
       case 'update':
