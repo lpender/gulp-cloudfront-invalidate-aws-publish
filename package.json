@@ -15,7 +15,7 @@
     "invalidation"
   ],
   "dependencies": {
-    "aws-sdk": "2.1.x",
+    "aws-sdk": "^2.1.16",
     "gulp-util": "3.0.x",
     "through2": "2.0.x"
   },
