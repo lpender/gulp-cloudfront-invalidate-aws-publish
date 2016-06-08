@@ -64,5 +64,7 @@ Lee Pender <Lpender@gmail.com>
 Thanks to:
 
 https://github.com/lpender/gulp-cloudfront-invalidate
+
 https://github.com/pgherveou/gulp-awspublish
+
 https://github.com/sindresorhus/gulp-debug/
