@@ -60,7 +60,7 @@ module.exports = function (options) {
         break;
     }
 
-    return callback();
+    return callback(null, file);
   };
 
   var invalidate = function(callback){
