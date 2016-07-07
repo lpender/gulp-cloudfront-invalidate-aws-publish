@@ -43,7 +43,8 @@ var cfSettings = {
   accessKeyId: '...',             // Optional AWS Access Key ID
   secretAccessKey: '...',         // Optional AWS Secret Access Key
   sessionToken: '...',            // Optional AWS Session Token
-  wait: true                      // Whether to wait until invalidation is completed (default: false)
+  wait: true,                     // Whether to wait until invalidation is completed (default: false)
+  indexRootPaths: true            // Invalidate index.html root paths (`foo/index.html` and `foo/`) (default: false)
 }
 
 gulp.task('invalidate', function () {

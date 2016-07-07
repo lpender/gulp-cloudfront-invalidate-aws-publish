@@ -3,7 +3,8 @@ var util = require('gulp-util')
   , aws = require('aws-sdk');
 
 module.exports = function (options) {
-  options.wait = (options.wait === undefined || !options.wait) ? false : true;
+  options.wait = !!options.wait;
+  options.indexRoot = !!options.indexRoot;
 
   var cloudfront = new aws.CloudFront();
 
@@ -16,8 +17,8 @@ module.exports = function (options) {
   var files = [];
 
   var complain = function (err, msg, callback) {
+    callback(false);
     throw new util.PluginError('gulp-cloudfront-invalidate', msg + ': ' + err);
-    return callback(false);
   };
 
   var check = function (id, callback) {
@@ -51,6 +52,9 @@ module.exports = function (options) {
       case 'create':
       case 'delete':
         files.push(file.s3.path);
+        if (options.indexRootPath && /index\.html$/.test(file.s3.path)) {
+          files.push(file.s3.path.replace(/index\.html$/, ''))
+        }
         break;
       case 'cache':
       case 'skip':
@@ -90,7 +94,7 @@ module.exports = function (options) {
 
       check(res.Invalidation.Id, callback);
     });
-  }
+  };
 
   return through.obj(processFile, invalidate);
 };
