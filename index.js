@@ -8,11 +8,18 @@ module.exports = function (options) {
 
   var cloudfront = new aws.CloudFront();
 
-  cloudfront.config.update({
-    accessKeyId: options.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: options.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY,
-    sessionToken: options.sessionToken || process.env.AWS_SESSION_TOKEN
-  });
+  if ('credentials' in options) {
+    cloudfront.config.update({
+      credentials: options.credentials
+    });
+  }
+  else {
+    cloudfront.config.update({
+      accessKeyId: options.accessKeyId || process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: options.secretAccessKey || process.env.AWS_SECRET_ACCESS_KEY,
+      sessionToken: options.sessionToken || process.env.AWS_SESSION_TOKEN
+    });
+  }
 
   var files = [];
 
