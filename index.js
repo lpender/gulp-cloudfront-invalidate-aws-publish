@@ -4,7 +4,7 @@ var util = require('gulp-util')
 
 module.exports = function (options) {
   options.wait = !!options.wait;
-  options.indexRoot = !!options.indexRoot;
+  options.indexRootPath = !!options.indexRootPath;
 
   var cloudfront = new aws.CloudFront();
 
