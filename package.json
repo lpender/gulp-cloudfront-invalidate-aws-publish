@@ -1,6 +1,6 @@
 {
   "name": "gulp-cloudfront-invalidate-aws-publish",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Lee Pender <lpender@gmail.com> (http://lpender.github.com)",
   "description": "Invalidates paths published with gulp-awspublish",
   "homepage": "https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish",
