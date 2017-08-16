@@ -58,9 +58,16 @@ module.exports = function (options) {
       case 'update':
       case 'create':
       case 'delete':
-        files.push(file.s3.path);
-        if (options.indexRootPath && /index\.html$/.test(file.s3.path)) {
-          files.push(file.s3.path.replace(/index\.html$/, ''))
+        let path = file.s3.path;
+
+        if (options.originPath) {
+          const originRegex = new RegExp(options.originPath.replace(/^\//, '') + '\/?');
+          path = path.replace(originRegex, '');
+        }
+
+        files.push(path);
+        if (options.indexRootPath && /index\.html$/.test(path)) {
+          files.push(path.replace(/index\.html$/, ''));
         }
         break;
       case 'cache':

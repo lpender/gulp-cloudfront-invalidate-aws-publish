@@ -44,6 +44,7 @@ var cfSettings = {
   secretAccessKey: '...',         // Optional AWS Secret Access Key
   sessionToken: '...',            // Optional AWS Session Token
   wait: true,                     // Whether to wait until invalidation is completed (default: false)
+  originPath: '/app',             // Configure OriginPath to be removed of file path to invalidation
   indexRootPath: true             // Invalidate index.html root paths (`foo/index.html` and `foo/`) (default: false)
 }
 
