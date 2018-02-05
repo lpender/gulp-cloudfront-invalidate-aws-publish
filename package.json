@@ -16,7 +16,8 @@
   ],
   "dependencies": {
     "aws-sdk": "^2.1.16",
-    "gulp-util": "3.0.x",
+    "fancy-log": "1.3.x",
+    "plugin-error": "1.0.x",
     "through2": "2.0.x"
   },
   "bugs": {
