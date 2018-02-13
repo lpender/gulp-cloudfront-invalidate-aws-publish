@@ -1,4 +1,5 @@
-var util = require('gulp-util')
+var PluginError = require('plugin-error')
+  , log = require('fancy-log')
   , through = require('through2')
   , aws = require('aws-sdk');
 
@@ -25,7 +26,7 @@ module.exports = function (options) {
 
   var complain = function (err, msg, callback) {
     callback(false);
-    throw new util.PluginError('gulp-cloudfront-invalidate', msg + ': ' + err);
+    throw new PluginError('gulp-cloudfront-invalidate', msg + ': ' + err);
   };
 
   var check = function (id, callback) {
@@ -74,7 +75,7 @@ module.exports = function (options) {
       case 'skip':
         break;
       default:
-        util.log('Unknown state: ' + file.s3.state);
+        log('Unknown state: ' + file.s3.state);
         break;
     }
 
@@ -100,7 +101,7 @@ module.exports = function (options) {
     }, function (err, res) {
       if (err) return complain(err, 'Could not invalidate cloudfront', callback);
 
-      util.log('Cloudfront invalidation created: ' + res.Invalidation.Id);
+      log('Cloudfront invalidation created: ' + res.Invalidation.Id);
 
       if (!options.wait) {
         return callback();
