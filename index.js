@@ -83,7 +83,11 @@ module.exports = function (options) {
   };
 
   var invalidate = function(callback){
-    if(files.length == 0) return callback();
+
+    if(files.length == 0) {
+      log('Cloudfront invalidation SKIPPED.  No files to invalidate.');
+      return callback();
+    }
 
     files = files.map(function(file) {
       return '/' + file;
