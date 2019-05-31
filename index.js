@@ -21,7 +21,11 @@ module.exports = function (options) {
       sessionToken: options.sessionToken || process.env.AWS_SESSION_TOKEN
     });
   }
-
+  if ('httpOptions' in options) {
+    cloudfront.config.update({
+      httpOptions: options.httpOptions
+    });
+  }
   var files = [];
 
   var complain = function (err, msg, callback) {
