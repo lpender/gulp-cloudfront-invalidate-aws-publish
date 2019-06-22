@@ -59,9 +59,10 @@ module.exports = function (options) {
       case 'update':
       case 'create':
       case 'delete':
-        let path = file.s3.path;
+        let path = file.s3.path.split('/').map(encodeURIComponent).join('/');
 
         if (options.originPath) {
+          options.originPath = options.originPath.split('/').map(encodeURIComponent).join('/');
           const originRegex = new RegExp(options.originPath.replace(/^\//, '') + '\/?');
           path = path.replace(originRegex, '');
         }
