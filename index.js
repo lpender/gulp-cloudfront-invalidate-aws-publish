@@ -69,6 +69,7 @@ module.exports = function (options) {
         files.push(path);
         if (options.indexRootPath && /index\.html$/.test(path)) {
           files.push(path.replace(/index\.html$/, ''));
+          files.push(path.replace(/\/index\.html$/, ''));
         }
         break;
       case 'cache':
