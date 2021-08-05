@@ -1,11 +1,12 @@
 {
-  "name": "gulp-cloudfront-invalidate-aws-publish",
-  "version": "1.0.0",
-  "author": "Lee Pender <lpender@gmail.com> (http://lpender.github.com)",
+  "name": "@pascencio/gulp-cloudfront-invalidate-aws-publish",
+  "version": "1.1.3",
+  "author": "Patricio Ascencio <pascencio@gmail.com> (http://pascencio.github.com)",
   "description": "Invalidates paths published with gulp-awspublish",
-  "homepage": "https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish",
+  "homepage": "https://github.com/pascencio/gulp-cloudfront-invalidate-aws-publish",
+  "types": "index.d.ts",
   "main": "index.js",
-  "repository": "lpender/gulp-cloudfront-invalidate-aws-publish",
+  "repository": "pascencio/gulp-cloudfront-invalidate-aws-publish",
   "keywords": [
     "gulp",
     "cloudfront",
@@ -21,7 +22,7 @@
     "through2": "2.0.x"
   },
   "bugs": {
-    "url": "https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish/issues"
+    "url": "https://github.com/pascencio/gulp-cloudfront-invalidate-aws-publish/issues"
   },
   "licenses": [
     {
