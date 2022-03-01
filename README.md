@@ -45,7 +45,9 @@ var cfSettings = {
   sessionToken: '...',            // Optional AWS Session Token
   wait: true,                     // Whether to wait until invalidation is completed (default: false)
   originPath: '/app',             // Configure OriginPath to be removed of file path to invalidation
-  indexRootPath: true             // Invalidate index.html root paths (`foo/index.html` and `foo/`) (default: false)
+  indexFullPath: false            // Invalidate index.html paths (`/foo/index.html`) (default: true)
+  indexTrailingSlashPath: true    // Invalidate index.html trailing slash paths (`/foo/`) (default: false)
+  indexNoTrailingSlashPath: true  // Invalidate index.html no trailing slash paths (`/foo`) (default: false)
 }
 
 gulp.task('invalidate', function () {
