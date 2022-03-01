@@ -6,6 +6,8 @@ var PluginError = require('plugin-error')
 module.exports = function (options) {
   options.wait = !!options.wait;
   options.indexRootPath = !!options.indexRootPath;
+  options.indexTrailingSlashPath = !!options.indexTrailingSlashPath
+  options.indexNoTrailingSlashPath = !!options.indexNoTrailingSlashPath
 
   var cloudfront = new aws.CloudFront();
 
@@ -66,10 +68,20 @@ module.exports = function (options) {
           path = path.replace(originRegex, '');
         }
 
-        files.push(path);
-        if (options.indexRootPath && /index\.html$/.test(path)) {
-          files.push(path.replace(/index\.html$/, ''));
+        if (/\/index\.html$/.test(path)) {
+          if (options.indexFullPath !== false) {
+            files.push(path);
+          }
+          if (options.indexTrailingSlashPath || options.indexRootPath) {
+            files.push(path.replace(/\/index\.html$/, '/'));
+          }
+          if (options.indexNoTrailingSlashPath) {
+            files.push(path.replace(/\/index\.html$/, ''));
+          }
+        } else {
+          files.push(path);
         }
+
         break;
       case 'cache':
       case 'skip':
